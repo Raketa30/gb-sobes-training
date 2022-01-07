@@ -1,0 +1,80 @@
+
+2. Описать ошибки в коде (см. задание в методичке) и предложить варианты оптимизации.
+
+Movable и Stopable  можно объеденить в один интерфейс
+
+interface Moveable {
+    void move();
+}
+
+interface Stopable {
+    void stop();
+}
+
+
+abstract class Car {
+    public Engine engine; - класс Engine не описан
+    private String color;
+    private String name; - модель
+
+    Отсутствует конструктор
+
+    protected void start() {
+        System.out.println("Car starting");
+    }
+
+    abstract void open(); - можно описать класс Locker для закрытия и открытия авто
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+}
+
+
+class LightWeightCar extends Car implements Moveable {
+
+    @Override
+    void open() {
+        System.out.println("Car is open");
+    }
+
+    @Override
+    public void move() {
+        System.out.println("Car is moving");
+    }
+
+}
+0 - что это вообще такое?)
+class Lorry extends Car, Moveable, Stopable { - множественное наследование? Название класса говорит ни о чем
+
+    public void move() {
+        System.out.println("Car is moving");
+    }
+
+    public void stop() {
+        System.out.println("Car is stop");
+    }
+}
+
+
