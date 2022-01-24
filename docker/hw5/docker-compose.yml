@@ -1,0 +1,20 @@
+version: '3.2'
+
+volumes:
+  hw5:
+    driver: local
+
+services:
+  postgres:
+    image: library/postgres:12.9
+    container_name: hw5
+    volumes:
+      - type: volume
+        source: hw5
+        target: /var/lib/postgresql/dataConfig
+    environment:
+      POSTGRES_DB: hw5
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
